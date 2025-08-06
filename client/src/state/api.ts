@@ -103,10 +103,14 @@ export const api = createApi({
 
           return { data: { user, userSub, userDetails } };
         } catch (error: unknown) {
+          const errObj = {
+            status: 500,
+            data: "Could not fetch user data"
+          };
           if (error instanceof Error) {
-            return { error: error.message || "Could not fetch user data" };
+            errObj.data = error.message || "Could not fetch user data";
           }
-          return { error: "Could not fetch user data" };
+          return { error: errObj };
         }
       },
     }),
