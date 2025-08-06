@@ -42,11 +42,11 @@ const formFields = {
   },
 };
 
-const AuthProvider = ({ children }: any) => {
+const AuthProvider: React.FC<React.PropsWithChildren<object>> = ({ children }) => {
   return (
     <div>
       <Authenticator formFields={formFields}>
-        {({ user }: any) =>
+        {({ user }: { user?: unknown }) =>
           user ? (
             <div>{children}</div>
           ) : (
