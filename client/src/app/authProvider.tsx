@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 import { Authenticator } from "@aws-amplify/ui-react";
 import { Amplify } from "aws-amplify";
@@ -42,11 +43,11 @@ const formFields = {
   },
 };
 
-const AuthProvider: React.FC<React.PropsWithChildren<object>> = ({ children }) => {
+const AuthProvider = ({ children }: any) => {
   return (
     <div>
       <Authenticator formFields={formFields}>
-        {({ user }: { user?: unknown }) =>
+        {({ user }: any) =>
           user ? (
             <div>{children}</div>
           ) : (
